@@ -7,10 +7,14 @@
 
 
 // VARIABILI
-var numeriRandom, pcRandom, numeriUtente;
+var numeriRandom, pcRandom, numeriUtente,numeriUtenteInt, numeroTentativi, count;
 
+// Valori delle variabili
 numeriRandom = [];
 numeriUtente = [];
+numeroTentativi = 84;
+count = 0;
+
 
 //Funzione che genera numeri Random
 function numRandom (min, max) {
@@ -28,3 +32,32 @@ while (numeriRandom.length < 16) {
 
 }
 console.log(numeriRandom);
+
+
+
+// Inserire un numero alla volta,compreso tra 1 e 100, per 100-16 volte.
+for (var i = 0; i <= numeroTentativi; i++ ){
+  numeriUtenteInt = parseInt(prompt('Inserisci un numero tra 1 e 100, attento alle MINE 💣 '));
+
+  // Se si inserisce un numero già presente nella lista dei numeri generati dal pc **GAME OVER**
+  if (numeriRandom.includes(numeriUtenteInt) == true){
+    alert('GAME OVER! 💣💣');
+    // Partita terminata!
+    break ;
+  }
+
+  // Non si può inserire lo stesso numero più volte.
+  else if (numeriUtente.includes(numeriUtenteInt) == true) {
+    alert('Numero già inserito, inserire un numero diverso!');
+  }
+
+  else {
+    numeriUtente.push(numeriUtenteInt);
+  }
+
+  // Contatore per segnare il punteggio del giocatore
+  count++;
+
+}
+
+alert("Il Tuo punteggio è " + ' ' + count + '  🕹️ ' );
